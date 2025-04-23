@@ -1,117 +1,148 @@
 # Discord Love Bot
 
-A personalized Discord bot for couples that sends scheduled messages, plays truth or dare, and uses AI to generate playful content. Perfect for keeping the romance alive across distance!
+A Discord bot designed to help couples stay connected and strengthen their relationship, even when physically apart. This bot provides personalized messages, reminders, games, and AI-powered romantic interactions.
 
 ## Features
 
-- 💕 **Personalized Messages**: Send love notes, compliments, and sweet messages to your partner with the `/ily` command
-- 🎮 **Truth or Dare Game**: Play truth or dare with regular and "spicy" options
-- 🤖 **AI-Generated Content**: Uses OpenAI to create unique, personalized content
-- ⏰ **Scheduled Messages**: Automated greetings and reminders based on UK time
-- 🎯 **User-Specific Preferences**: Configure different message styles for each partner
+- **Personalized Messages**: Schedule good morning messages, reminders, and special occasion notes
+- **Truth or Dare Game**: Play a customized truth or dare game with your partner
+- **AI-Generated Content**: Leverages OpenAI to create personalized romantic messages
+- **Schedule Management**: Set up recurring messages at specific times
+- **User Preferences**: Each partner can customize their message preferences
+- **Dashboard**: Web interface to manage all settings and monitor bot status
+
+## Technology Stack
+
+- **Frontend**: React, TailwindCSS, shadcn/ui components
+- **Backend**: Node.js, Express
+- **Database**: PostgreSQL with Drizzle ORM
+- **Bot**: Discord.js
+- **AI**: OpenAI API
+- **Deployment**: Configured for easy deployment on Render
 
 ## Getting Started
 
-### 1. Create a Discord Bot
+### Prerequisites
+
+- Node.js 18+ and npm
+- PostgreSQL database
+- Discord bot token
+- OpenAI API key
+- Discord User IDs for both partners
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/discord-love-bot.git
+   cd discord-love-bot
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Create a `.env` file with the following variables:
+   ```
+   DATABASE_URL=postgresql://username:password@localhost:5432/discordlovebot
+   DISCORD_TOKEN=your_discord_bot_token
+   OPENAI_API_KEY=your_openai_api_key
+   HUSBAND_ID=discord_user_id_for_husband
+   WIFE_ID=discord_user_id_for_wife
+   ```
+
+4. Set up the database:
+   ```
+   npm run db:push
+   ```
+
+5. Start the development server:
+   ```
+   npm run dev
+   ```
+
+### Discord Bot Setup
 
 1. Go to the [Discord Developer Portal](https://discord.com/developers/applications)
-2. Create a "New Application" and give it a name
-3. Go to the "Bot" tab and click "Add Bot"
-4. Under the TOKEN section, click "Reset Token" and copy your token
-5. Enable the following Privileged Gateway Intents:
-   - Presence Intent
+2. Create a new application
+3. Go to the "Bot" tab and create a bot
+4. Enable the following Privileged Gateway Intents:
    - Server Members Intent
    - Message Content Intent
-6. In the "OAuth2" → "URL Generator" tab, select scopes: "bot" and "applications.commands"
-7. For bot permissions, select: "Send Messages", "Embed Links", and "Use Slash Commands"
-8. Copy the generated URL and open it to invite the bot to your server
+   - Presence Intent
+5. Copy the bot token to your `.env` file
+6. Generate an invite URL from the OAuth2 URL Generator:
+   - Select "bot" and "applications.commands" scopes
+   - Select appropriate bot permissions (Send Messages, Read Messages, etc.)
+7. Invite the bot to your server using the generated URL
 
-### 2. Get Your OpenAI API Key
+## Usage
 
-1. Create an account at [OpenAI](https://platform.openai.com/)
-2. Go to the [API Keys page](https://platform.openai.com/api-keys)
-3. Create a new secret key
+### Dashboard
 
-### 3. Setup Your Love Bot
+Access the web dashboard at `http://localhost:5000` to:
+- Monitor bot status
+- Configure scheduled messages
+- Customize user preferences
+- View command usage statistics
+- Adjust AI settings
 
-1. Clone this template or fork it to your own Replit account
-2. Go to the "Setup" page in the web interface
-3. Enter your Discord Bot Token, OpenAI API Key, and Discord User IDs
-4. Configure your preferred AI model and message style
-5. Optionally add custom truth questions and dare challenges
-6. Click "Complete Setup" to save your configuration
+### Discord Commands
 
-### 4. Find Discord IDs
+The bot supports the following slash commands:
+- `/gm`: Send a good morning message
+- `/tod`: Play Truth or Dare
+- `/truth`: Ask a truth question
+- `/dare`: Give a dare challenge
+- `/love`: Send a romantic message
+- `/help`: Display available commands
 
-To find your Discord ID:
+## Deployment
 
-1. Open Discord and go to Settings
-2. Go to "Advanced" and enable "Developer Mode"
-3. Right-click on your username and select "Copy ID"
-4. Do the same for your partner's username
+See the following guides for deployment instructions:
+- [RENDER_DEPLOYMENT_GUIDE.md](RENDER_DEPLOYMENT_GUIDE.md) - Deploy to Render
+- [UPTIME_SETUP_GUIDE.md](UPTIME_SETUP_GUIDE.md) - Set up UptimeRobot for 24/7 uptime
 
-## Commands
+## Configuration
 
-The Discord Love Bot comes with several slash commands:
+### User Settings
 
-- `/ily` - Sends a loving message with a flower image
-- `/truthordare [spicy]` - Play truth or dare (add "spicy" for more intimate questions)
-- `/goodmorning` - Send a good morning message (can also be scheduled)
+Each partner can configure their preferences:
+- Good morning messages
+- Special occasion reminders
+- General reminders
+- Message style (romantic, humorous, motivational)
 
-## Scheduling
+### AI Settings
 
-The bot includes pre-configured scheduled messages:
+Customize the AI behavior:
+- Model selection (GPT-3.5-turbo or GPT-4)
+- Temperature (creativity level)
+- Maximum tokens
+- Message style
 
-- **Good Morning** - Sends at 07:00 AM (UK time)
-- **Weekend Fun** - Sends at 10:00 AM (UK time) on weekends
-- **Evening Check-in** - Sends at 6:00 PM (UK time)
+### Scheduled Messages
 
-You can customize these schedules in the "Schedule" page of the web interface.
+Configure recurring messages with:
+- Type (Good Morning, Weekend Fun, etc.)
+- Time (in 24-hour format)
+- Recipients (husband, wife, or both)
+- Status (active or paused)
 
-## Customization
+## Contributing
 
-- **AI Settings** - Change the AI model, temperature, and message style
-- **User Preferences** - Configure each partner's preferences for types of messages
-- **Custom Content** - Add your own truth questions and dare challenges
-
-## Keeping Your Bot Online 24/7
-
-To ensure your Love Bot runs continuously, even on free hosting platforms:
-
-1. **UptimeRobot Setup**: This repository includes files to help you set up UptimeRobot monitoring:
-   - `uptimerobot-setup.js`: Script to automatically create a monitor
-   - `UPTIME_GUIDE.md`: Step-by-step guide for UptimeRobot configuration
-
-2. **How it works**: UptimeRobot pings your bot every 5 minutes, preventing it from going idle on free hosting platforms like Render or Replit.
-
-3. **Benefits**:
-   - Ensures scheduled messages are sent on time
-   - Keeps your Discord bot responsive 24/7
-   - Provides monitoring and alerts if your bot goes offline
-
-For detailed deployment instructions, see the `DEPLOYMENT.md` file.
-
-## Development
-
-This project is built with:
-
-- **Frontend**: React, TailwindCSS, shadcn/ui
-- **Backend**: Express, Discord.js
-- **AI**: OpenAI API
-- **Data Storage**: In-memory storage (no database setup required)
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT License - Feel free to modify and use for your personal relationship!
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Support
+## Acknowledgements
 
-If you encounter any issues or have questions:
-
-1. Check the "Help" section in the web interface
-2. Submit an issue on the GitHub repository
-3. Reach out to the creator on Discord
-
----
-
-Created with ❤️ for couples everywhere. May your love grow stronger with each message!
+- [Discord.js](https://discord.js.org/) for the Discord API integration
+- [OpenAI](https://openai.com/) for the AI capabilities
+- [shadcn/ui](https://ui.shadcn.com/) for the beautiful UI components
+- [TailwindCSS](https://tailwindcss.com/) for styling
+- [Drizzle ORM](https://orm.drizzle.team/) for database management
+- [Render](https://render.com/) for hosting recommendations

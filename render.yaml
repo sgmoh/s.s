@@ -4,7 +4,7 @@ services:
     name: discord-love-bot
     env: node
     buildCommand: npm ci && npm run build
-    startCommand: node dist/server/index.js
+    startCommand: NODE_ENV=production node dist/server/index.js
     plan: free
     envVars:
       - key: NODE_ENV
@@ -17,5 +17,14 @@ services:
         sync: false
       - key: WIFE_ID
         sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: discord-love-bot-db
+          property: connectionString
     healthCheckPath: /api/health
     autoDeploy: true
+
+databases:
+  - name: discord-love-bot-db
+    plan: free
+    postgresMajorVersion: 15

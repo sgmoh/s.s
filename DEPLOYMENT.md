@@ -1,106 +1,108 @@
-# Deployment Guide for Discord Love Bot
+# Deploy Discord Love Bot on Replit
 
-This guide will help you deploy your Discord Love Bot to a production environment. There are several options available depending on your technical comfort level and budget.
+This guide will walk you through deploying the Discord Love Bot on Replit, which offers a free and easy way to keep your bot running.
 
-## Option 1: Deploy to Render (Recommended)
+## Prerequisites
 
-[Render](https://render.com) offers free web services that are perfect for this application.
-
-### Prerequisites
-- A Render account (free)
+- A [Replit](https://replit.com) account (free tier is fine)
 - Your Discord Bot Token
 - Your OpenAI API Key
 - Discord User IDs for you and your partner
 
-### Steps
+## Step 1: Create a New Repl
 
-1. Fork or clone this repository to your GitHub account
-2. Log in to [Render](https://render.com)
-3. Click "New +" and select "Web Service"
-4. Connect your GitHub account and select the repository
-5. Configure the following settings:
-   - Name: discord-love-bot (or your preferred name)
-   - Environment: Node
-   - Build Command: `npm install`
-   - Start Command: `node -r tsx/cjs server/index.ts`
-6. Add the following environment variables:
-   - `NODE_ENV`: production
+1. Login to Replit and click "Create"
+2. Choose "Import from GitHub" 
+3. Paste your GitHub repository URL
+4. Choose "Node.js" as the language
+5. Click "Import from GitHub"
+
+## Step 2: Configure Environment Variables
+
+1. In your Repl, click on the "Secrets" (lock icon) in the Tools section
+2. Add the following environment variables:
+   - `DATABASE_URL`: The PostgreSQL connection URL (provided by Replit)
    - `DISCORD_TOKEN`: Your Discord bot token
    - `OPENAI_API_KEY`: Your OpenAI API key
-   - `HUSBAND_ID`: The Discord user ID for the husband
-   - `WIFE_ID`: The Discord user ID for the wife
-7. Click "Create Web Service"
+   - `HUSBAND_ID`: Discord user ID for the husband
+   - `WIFE_ID`: Discord user ID for the wife
 
-Render will automatically deploy your application and provide a URL. Your Discord bot will be connected and ready to use!
+## Step 3: Set Up the Database
 
-## Option 2: Deploy using Docker
-
-If you prefer to use Docker, you can use the included Dockerfile to deploy the application.
-
-### Prerequisites
-- Docker installed on your server
-- Basic knowledge of Docker and server management
-
-### Steps
-
-1. Clone this repository to your server
-2. Build the Docker image:
-   ```
-   docker build -t discord-love-bot .
-   ```
-3. Run the container with your environment variables:
-   ```
-   docker run -d -p 3000:3000 \
-     -e DISCORD_TOKEN=your_discord_token \
-     -e OPENAI_API_KEY=your_openai_key \
-     -e HUSBAND_ID=husband_discord_id \
-     -e WIFE_ID=wife_discord_id \
-     discord-love-bot
+1. Click on "Database" in the Tools section to create a PostgreSQL database
+2. After your database is created, Replit will automatically add the `DATABASE_URL` secret
+3. Run the database migrations:
+   ```bash
+   npm run db:push
    ```
 
-Your Discord bot will be running and accessible at http://your-server-ip:3000
+## Step 4: Configure the Run Command
 
-## Option 3: Deploy to Replit
+1. Update the "Run" button configuration in `.replit`:
+   ```
+   run = "npm run dev"
+   ```
 
-The application was built on Replit and can be easily deployed there.
+2. Alternatively, you can create a new file called `.replit` with the following content:
+   ```
+   run = "npm run dev"
+   language = "nodejs"
+   onBoot = "npm install"
+   ```
 
-### Prerequisites
-- A Replit account
-- Your Discord Bot Token and OpenAI API Key
+## Step 5: Run Your Bot
 
-### Steps
+1. Click the "Run" button to start your bot
+2. Check the console for any errors
+3. Verify that your bot appears online in Discord
 
-1. Fork this Repl to your account
-2. Add the following secrets in the "Secrets" tool:
-   - `DISCORD_TOKEN`: Your Discord bot token
-   - `OPENAI_API_KEY`: Your OpenAI API key
-   - `HUSBAND_ID`: The Discord user ID for the husband
-   - `WIFE_ID`: The Discord user ID for the wife
-3. Click "Run" to start the application
+## Step 6: Keep Your Bot Running 24/7
 
-Replit will automatically give you a URL for your application. The Discord bot will be connected and ready to use!
+Replit's free tier will "sleep" your application after a period of inactivity. To keep your bot running continuously:
 
-## Keeping Your Bot Online 24/7
+1. Set up UptimeRobot to ping your application regularly:
+   - Follow the instructions in `UPTIME_SETUP_GUIDE.md`
+   - Use your Replit URL + `/api/health` as the endpoint to monitor
 
-### For Render
-Render's free tier automatically spins down after periods of inactivity. To keep it running:
-- Upgrade to a paid plan (~$7/month)
-- Or set up a service like [UptimeRobot](https://uptimerobot.com/) to ping your application's health endpoint every 5 minutes
-
-### For Docker/VPS
-- Ensure your server has a good uptime and monitoring solution
-- Consider using `docker-compose` with restart policies
-
-### For Replit
-- Use Replit's "Always On" feature (requires Replit Pro)
-- Or set up a service like [UptimeRobot](https://uptimerobot.com/) to ping your application regularly
+2. For the URL to monitor, use:
+   ```
+   https://your-repl-name.your-username.repl.co/api/health
+   ```
 
 ## Troubleshooting
 
-If your bot is not connecting properly:
-1. Check that your Discord token is correct and the bot has been invited to your server
-2. Verify that the appropriate Gateway Intents are enabled in the Discord Developer Portal
-3. Check the application logs for any error messages
-4. Make sure your OpenAI API key is valid and has sufficient credits
+### Bot Goes Offline
 
-For any other issues, refer to the README.md file or submit an issue on the GitHub repository.
+If your bot goes offline after some time:
+1. Ensure UptimeRobot is properly configured
+2. Check that your Replit is not hitting resource limits
+3. Verify there are no errors in the console logs
+
+### Database Connection Issues
+
+1. Make sure the `DATABASE_URL` secret is correctly set
+2. Try resetting the database through the Replit UI
+3. Run the migrations again with `npm run db:push`
+
+### Discord Integration Issues
+
+1. Verify your Discord bot token is valid
+2. Ensure the bot has been invited to your server with the correct permissions
+3. Check that the appropriate Gateway Intents are enabled in the Discord Developer Portal
+
+## Updating Your Bot
+
+To update your bot on Replit:
+
+1. Make changes to your GitHub repository
+2. In Replit, go to the "Version Control" tab
+3. Click "Pull" to get the latest changes
+4. Click "Run" to restart your bot with the updates
+
+## Additional Resources
+
+- [Replit Documentation](https://docs.replit.com/)
+- [Discord.js Guide](https://discordjs.guide/)
+- [UptimeRobot Documentation](https://uptimerobot.com/help/)
+
+With these steps, your Discord Love Bot will be deployed to Replit and ready to use!
