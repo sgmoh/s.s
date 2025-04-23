@@ -10,13 +10,13 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
     "lib": ["esnext", "dom", "dom.iterable"],
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./client/src/*"],
       "@shared/*": ["./shared/*"]
     }
   },
-  "include": ["client/src/**/*", "shared/**/*", "server/**/*"],
-  "exclude": ["node_modules", "build", "dist", "**/*.test.ts"]
+  "include": ["server/**/*", "shared/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
 }
