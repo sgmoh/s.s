@@ -1,0 +1,117 @@
+
+Search
+
+Live tail
+GMT+1
+
+
+==> Cloning from https://github.com/sgmoh/s.s
+==> Checking out commit 94ffb06ed3b8ce87f58b1223e57a2b616828a493 in branch main
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 209B done
+#1 DONE 0.0s
+#2 [internal] load metadata for docker.io/library/node:20-slim
+#2 ...
+#3 [auth] library/node:pull render-prod/docker-mirror-repository/library/node:pull token for us-west1-docker.pkg.dev
+#3 DONE 0.0s
+#2 [internal] load metadata for docker.io/library/node:20-slim
+#2 DONE 0.6s
+#4 [internal] load .dockerignore
+#4 transferring context:
+#4 transferring context: 2B done
+#4 DONE 0.0s
+#5 [1/6] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#5 resolve docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633 0.0s done
+#5 ...
+#6 [internal] load build context
+#6 transferring context: 1.60MB 0.0s done
+#6 DONE 0.1s
+#5 [1/6] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#5 extracting sha256:8a628cdd7ccc83e90e5a95888fcb0ec24b991141176c515ad101f12d6433eb96
+#5 extracting sha256:8a628cdd7ccc83e90e5a95888fcb0ec24b991141176c515ad101f12d6433eb96 0.8s done
+#5 extracting sha256:d1dd334a81115b09134618d67d53ebb6162d9cd6858905dfaec3a8da9e64ae39
+#5 extracting sha256:d1dd334a81115b09134618d67d53ebb6162d9cd6858905dfaec3a8da9e64ae39 0.1s done
+#5 extracting sha256:b452662ac2b1cc5015de958ca3db9cf65d6ea42ad1ffda528555cad4476cd3f9
+#5 extracting sha256:b452662ac2b1cc5015de958ca3db9cf65d6ea42ad1ffda528555cad4476cd3f9 1.2s done
+#5 extracting sha256:b085206451dbd0bcfa0cdf6c5c2cf33f257e2d077408c49b0a9ff1b411c126a8 0.1s done
+#5 DONE 4.3s
+#5 [1/6] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#5 extracting sha256:9a176e756f6b6a4029593582d7c51f7c2839913d7da3e1a3f967de6e82654258 0.0s done
+#5 DONE 4.3s
+#7 [2/6] WORKDIR /app
+#7 DONE 0.0s
+#8 [3/6] COPY package*.json ./
+#8 DONE 0.0s
+#9 [4/6] RUN npm ci
+#9 3.343 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+#9 3.938 npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+#9 3.956 npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+#9 8.824 
+#9 8.824 added 536 packages, and audited 537 packages in 9s
+#9 8.824 
+#9 8.824 78 packages are looking for funding
+#9 8.824   run `npm fund` for details
+#9 8.851 
+#9 8.851 6 moderate severity vulnerabilities
+#9 8.851 
+#9 8.851 To address issues that do not require attention, run:
+#9 8.851   npm audit fix
+#9 8.851 
+#9 8.851 To address all issues (including breaking changes), run:
+#9 8.851   npm audit fix --force
+#9 8.851 
+#9 8.851 Run `npm audit` for details.
+#9 8.852 npm notice
+#9 8.852 npm notice New major version of npm available! 10.8.2 -> 11.3.0
+#9 8.852 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0
+#9 8.852 npm notice To update run: npm install -g npm@11.3.0
+#9 8.852 npm notice
+#9 DONE 11.5s
+#10 [5/6] COPY . .
+#10 DONE 0.3s
+#11 [6/6] RUN npm run build
+#11 0.161 
+#11 0.161 > rest-express@1.0.0 build
+#11 0.161 > vite build && tsc
+#11 0.161 
+#11 0.340 vite v5.4.14 building for production...
+#11 0.389 transforming...
+#11 0.644 Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+#11 0.644   npx update-browserslist-db@latest
+#11 0.644   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+#11 3.807 ✓ 1730 modules transformed.
+#11 4.010 rendering chunks...
+#11 4.017 computing gzip size...
+#11 4.028 ../dist/public/index.html                   1.09 kB │ gzip:   0.58 kB
+#11 4.028 ../dist/public/assets/index-CrrlJyx1.css   71.67 kB │ gzip:  12.02 kB
+#11 4.028 ../dist/public/assets/index-Dl-UhCK7.js   381.88 kB │ gzip: 119.77 kB
+#11 4.029 ✓ built in 3.67s
+#11 7.018 server/routes.ts(296,13): error TS2698: Spread types may only be created from object types.
+#11 7.018 server/routes.ts(330,64): error TS7006: Parameter 'q' implicitly has an 'any' type.
+#11 7.018 server/routes.ts(341,63): error TS7006: Parameter 'd' implicitly has an 'any' type.
+#11 7.018 server/vite.ts(39,5): error TS2322: Type '{ middlewareMode: boolean; hmr: { server: Server<typeof IncomingMessage, typeof ServerResponse>; }; allowedHosts: boolean; }' is not assignable to type 'ServerOptions'.
+#11 7.018   Types of property 'allowedHosts' are incompatible.
+#11 7.018     Type 'boolean' is not assignable to type 'true | string[] | undefined'.
+#11 ERROR: process "/bin/sh -c npm run build" did not complete successfully: exit code: 2
+------
+ > [6/6] RUN npm run build:
+4.028 ../dist/public/index.html                   1.09 kB │ gzip:   0.58 kB
+4.028 ../dist/public/assets/index-CrrlJyx1.css   71.67 kB │ gzip:  12.02 kB
+4.028 ../dist/public/assets/index-Dl-UhCK7.js   381.88 kB │ gzip: 119.77 kB
+4.029 ✓ built in 3.67s
+7.018 server/routes.ts(296,13): error TS2698: Spread types may only be created from object types.
+7.018 server/routes.ts(330,64): error TS7006: Parameter 'q' implicitly has an 'any' type.
+7.018 server/routes.ts(341,63): error TS7006: Parameter 'd' implicitly has an 'any' type.
+7.018 server/vite.ts(39,5): error TS2322: Type '{ middlewareMode: boolean; hmr: { server: Server<typeof IncomingMessage, typeof ServerResponse>; }; allowedHosts: boolean; }' is not assignable to type 'ServerOptions'.
+7.018   Types of property 'allowedHosts' are incompatible.
+7.018     Type 'boolean' is not assignable to type 'true | string[] | undefined'.
+------
+Dockerfile:12
+--------------------
+  10 |     
+  11 |     ENV NODE_ENV=production
+  12 | >>> RUN npm run build
+  13 |     
+  14 |     EXPOSE 5000
+--------------------
+error: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 2

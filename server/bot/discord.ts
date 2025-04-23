@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits, Events, REST, Routes } from "discord.js";
+import { Client, GatewayIntentBits, Events, REST, Routes, ActivityType } from "discord.js";
 import { storage } from "../storage";
 import { commands } from "./commands";
 import { setupScheduler } from "./scheduler";
@@ -31,6 +31,10 @@ export async function setupDiscordBot() {
   // Event: Bot is ready
   client.once(Events.ClientReady, async (c) => {
     console.log(`Ready! Logged in as ${c.user.tag}`);
+    
+    // Set custom status "Watching Sage and Salman"
+    // Using c.user which is guaranteed to be non-null in the ClientReady event
+    c.user.setActivity("Sage and Salman", { type: ActivityType.Watching });
     
     // Register commands with the correct client ID
     try {
