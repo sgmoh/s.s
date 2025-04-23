@@ -293,9 +293,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
           token: discordToken,
           aiApiKey: openAiKey,
           aiSettings: {
-            ...botConfig.aiSettings,
             model: aiModel,
-            messageStyle: messageStyle
+            messageStyle: messageStyle,
+            temperature: botConfig.aiSettings?.temperature || 0.7,
+            maxTokens: botConfig.aiSettings?.maxTokens || 150
           }
         });
       }
@@ -327,7 +328,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       // 3. Add custom truth questions if provided
       if (customTruths) {
-        const truthQuestions = customTruths.split('\n').filter(q => q.trim());
+        const truthQuestions = customTruths.split('\n').filter((q: string) => q.trim());
         for (const question of truthQuestions) {
           await storage.createTruthQuestion({
             question: question.trim(),
@@ -338,7 +339,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       // 4. Add custom dare challenges if provided
       if (customDares) {
-        const dareChallenges = customDares.split('\n').filter(d => d.trim());
+        const dareChallenges = customDares.split('\n').filter((d: string) => d.trim());
         for (const challenge of dareChallenges) {
           await storage.createDareChallenge({
             challenge: challenge.trim(),
