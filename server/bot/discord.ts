@@ -32,11 +32,37 @@ export async function setupDiscordBot() {
     
     // Register commands with the correct client ID
     try {
-      await rest.put(
-        Routes.applicationCommands(c.user.id),
-        { body: commandData },
-      );
-      console.log('Successfully registered application (/) commands.');
+      // Register commands for specific guilds for faster testing
+      const guilds = await client.guilds.fetch();
+      let registeredInAnyGuild = false;
+      
+      // Register commands in all guilds the bot is in
+      for (const [guildId, _] of guilds) {
+        try {
+          await rest.put(
+            Routes.applicationGuildCommands(c.user.id, guildId),
+            { body: commandData },
+          );
+          console.log(`Successfully registered commands for guild ${guildId}`);
+          registeredInAnyGuild = true;
+        } catch (guildError) {
+          console.error(`Error registering commands for guild ${guildId}:`, guildError);
+        }
+      }
+      
+      if (registeredInAnyGuild) {
+        console.log('Successfully registered application (/) commands in guilds.');
+        console.log('Guild commands are available immediately (no 1-hour wait).');
+      } else {
+        console.log('Failed to register commands in any guild. Trying global registration...');
+        // Fallback to global commands
+        await rest.put(
+          Routes.applicationCommands(c.user.id),
+          { body: commandData },
+        );
+        console.log('Successfully registered global application (/) commands.');
+        console.log('Note: Global commands can take up to an hour to propagate across all servers.');
+      }
     } catch (error) {
       console.error('Error registering slash commands:', error);
     }
