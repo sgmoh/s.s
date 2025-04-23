@@ -1,0 +1,113 @@
+==> Cloning from https://github.com/sgmoh/s.s
+==> Checking out commit 8ec60b22b54299b2290496f062b5a3c39628aa2f in branch main
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 208B done
+#1 DONE 0.0s
+#2 [internal] load metadata for docker.io/library/node:20-slim
+#2 ...
+#3 [auth] library/node:pull render-prod/docker-mirror-repository/library/node:pull token for us-west1-docker.pkg.dev
+#3 DONE 0.0s
+#2 [internal] load metadata for docker.io/library/node:20-slim
+#2 DONE 0.6s
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+#5 [internal] load build context
+#5 transferring context: 1.38MB 0.0s done
+#5 DONE 0.0s
+#6 [1/5] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#6 resolve docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633 0.0s done
+#6 DONE 0.1s
+#6 [1/5] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#6 sha256:9a176e756f6b6a4029593582d7c51f7c2839913d7da3e1a3f967de6e82654258 449B / 449B 0.1s done
+#6 sha256:b085206451dbd0bcfa0cdf6c5c2cf33f257e2d077408c49b0a9ff1b411c126a8 1.71MB / 1.71MB 0.3s done
+#6 sha256:d1dd334a81115b09134618d67d53ebb6162d9cd6858905dfaec3a8da9e64ae39 3.31kB / 3.31kB 0.1s done
+#6 sha256:b452662ac2b1cc5015de958ca3db9cf65d6ea42ad1ffda528555cad4476cd3f9 0B / 41.16MB 0.2s
+#6 sha256:b452662ac2b1cc5015de958ca3db9cf65d6ea42ad1ffda528555cad4476cd3f9 10.49MB / 41.16MB 0.3s
+#6 sha256:8a628cdd7ccc83e90e5a95888fcb0ec24b991141176c515ad101f12d6433eb96 0B / 28.23MB 0.2s
+#6 sha256:b452662ac2b1cc5015de958ca3db9cf65d6ea42ad1ffda528555cad4476cd3f9 28.31MB / 41.16MB 0.5s
+#6 sha256:8a628cdd7ccc83e90e5a95888fcb0ec24b991141176c515ad101f12d6433eb96 28.23MB / 28.23MB 0.4s done
+#6 sha256:b452662ac2b1cc5015de958ca3db9cf65d6ea42ad1ffda528555cad4476cd3f9 41.16MB / 41.16MB 0.6s done
+#6 extracting sha256:8a628cdd7ccc83e90e5a95888fcb0ec24b991141176c515ad101f12d6433eb96
+#6 extracting sha256:8a628cdd7ccc83e90e5a95888fcb0ec24b991141176c515ad101f12d6433eb96 0.8s done
+#6 DONE 1.5s
+#6 [1/5] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#6 extracting sha256:d1dd334a81115b09134618d67d53ebb6162d9cd6858905dfaec3a8da9e64ae39
+#6 extracting sha256:d1dd334a81115b09134618d67d53ebb6162d9cd6858905dfaec3a8da9e64ae39 0.2s done
+#6 extracting sha256:b452662ac2b1cc5015de958ca3db9cf65d6ea42ad1ffda528555cad4476cd3f9
+#6 extracting sha256:b452662ac2b1cc5015de958ca3db9cf65d6ea42ad1ffda528555cad4476cd3f9 1.3s done
+#6 extracting sha256:b085206451dbd0bcfa0cdf6c5c2cf33f257e2d077408c49b0a9ff1b411c126a8 0.1s done
+#6 DONE 3.1s
+#6 [1/5] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#6 extracting sha256:9a176e756f6b6a4029593582d7c51f7c2839913d7da3e1a3f967de6e82654258 0.0s done
+#6 DONE 3.1s
+#7 [2/5] WORKDIR /app
+#7 DONE 0.0s
+#8 [3/5] COPY package*.json ./
+#8 DONE 0.0s
+#9 [4/5] RUN npm install
+#9 3.069 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+#9 3.619 npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+#9 3.681 npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+#9 7.923 
+#9 7.923 added 537 packages, and audited 538 packages in 8s
+#9 7.923 
+#9 7.923 78 packages are looking for funding
+#9 7.923   run `npm fund` for details
+#9 7.949 
+#9 7.949 7 moderate severity vulnerabilities
+#9 7.949 
+#9 7.949 To address issues that do not require attention, run:
+#9 7.949   npm audit fix
+#9 7.949 
+#9 7.949 To address all issues (including breaking changes), run:
+#9 7.949   npm audit fix --force
+#9 7.949 
+#9 7.949 Run `npm audit` for details.
+#9 7.950 npm notice
+#9 7.950 npm notice New major version of npm available! 10.8.2 -> 11.3.0
+#9 7.950 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0
+#9 7.950 npm notice To update run: npm install -g npm@11.3.0
+#9 7.950 npm notice
+#9 DONE 11.6s
+#10 [5/5] COPY . .
+#10 DONE 0.3s
+#11 exporting to docker image format
+#11 exporting layers
+#11 exporting layers 15.0s done
+#11 exporting manifest sha256:4ad61760429e44856062a191dc349b085ca4d6e1b87f4b583be16e280674350d done
+#11 exporting config sha256:a24aeddbec89ab2d287ee31c8953cf61e944b78dc4235b87b427feb85738eb84 done
+#11 DONE 18.0s
+#12 exporting cache to client directory
+#12 preparing build cache for export
+#12 writing cache manifest sha256:700e167aad32b8f5653c78d13817f3237e95655303934daa369f061303ee55ec done
+#12 DONE 4.1s
+Pushing image to registry...
+Upload succeeded
+==> Deploying...
+node:internal/modules/esm/get_format:189
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".ts" for /app/server/index.ts
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:189:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:232:36)
+    at defaultLoad (node:internal/modules/esm/load:145:22)
+    at async ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:477:45)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:110:19) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+Node.js v20.19.1
+==> Exited with status 1
+==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+node:internal/modules/esm/get_format:189
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".ts" for /app/server/index.ts
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:189:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:232:36)
+    at defaultLoad (node:internal/modules/esm/load:145:22)
+    at async ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:477:45)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:110:19) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+Node.js v20.19.1
