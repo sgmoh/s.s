@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, AttachmentBuilder, EmbedBuilder } from "discord.js";
+import { SlashCommandBuilder, AttachmentBuilder, EmbedBuilder, ChatInputCommandInteraction } from "discord.js";
 import { storage } from "../storage";
 import { generateAIMessage } from "./ai";
 
@@ -13,7 +13,7 @@ export const commands = {
           .setDescription("Optional custom message to include")
           .setRequired(false)),
     
-    execute: async (interaction) => {
+    execute: async (interaction: ChatInputCommandInteraction) => {
       // No ephemeral option - message will be visible to everyone
       await interaction.deferReply({ ephemeral: false });
       
@@ -55,7 +55,7 @@ export const commands = {
           .setDescription("Include spicy questions/dares?")
           .setRequired(false)),
     
-    execute: async (interaction) => {
+    execute: async (interaction: ChatInputCommandInteraction) => {
       // Only make spicy ones ephemeral, regular ones will be public
       const spicy = interaction.options.getBoolean("spicy") || false;
       await interaction.deferReply({ ephemeral: spicy });

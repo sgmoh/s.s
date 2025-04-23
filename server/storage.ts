@@ -328,8 +328,13 @@ export class MemStorage implements IStorage {
   
   async createCommandStat(stat: InsertCommandStat): Promise<CommandStat> {
     const id = this.statCounter++;
+    
+    // Ensure usedAt is always set
+    const usedAt = stat.usedAt ?? new Date();
+    
     const newStat: CommandStat = {
       ...stat,
+      usedAt,
       id,
     };
     
