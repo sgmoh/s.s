@@ -14,7 +14,8 @@ export const commands = {
           .setRequired(false)),
     
     execute: async (interaction) => {
-      await interaction.deferReply();
+      // No ephemeral option - message will be visible to everyone
+      await interaction.deferReply({ ephemeral: false });
       
       try {
         const customMessage = interaction.options.getString("message");
@@ -55,11 +56,12 @@ export const commands = {
           .setRequired(false)),
     
     execute: async (interaction) => {
-      await interaction.deferReply({ ephemeral: true });
+      // Only make spicy ones ephemeral, regular ones will be public
+      const spicy = interaction.options.getBoolean("spicy") || false;
+      await interaction.deferReply({ ephemeral: spicy });
       
       try {
         const type = interaction.options.getString("type");
-        const spicy = interaction.options.getBoolean("spicy") || false;
         
         if (type === "truth") {
           const questions = await storage.getTruthQuestions(spicy);
