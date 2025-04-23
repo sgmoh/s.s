@@ -4,7 +4,7 @@ import { setupVite, serveStatic, log } from "./vite";
 import * as fs from 'fs';
 import * as path from 'path';
 
-// Load environment variables from .env file
+// Load environment variables from .env file if not already set
 const envPath = path.join(process.cwd(), '.env');
 if (fs.existsSync(envPath)) {
   const envConfig = fs.readFileSync(envPath, 'utf8')
@@ -13,12 +13,20 @@ if (fs.existsSync(envPath)) {
     .map(line => line.split('='));
   
   envConfig.forEach(([key, value]) => {
-    if (key && value) {
+    if (key && value && !process.env[key]) {
       process.env[key] = value;
     }
   });
   console.log('Environment variables loaded from .env file');
 }
+
+// Debug environment variables (without exposing sensitive values)
+console.log('Available environment variables:');
+console.log('DISCORD_TOKEN:', process.env.DISCORD_TOKEN ? '✓ (Set)' : '✗ (Not set)');
+console.log('OPENAI_API_KEY:', process.env.OPENAI_API_KEY ? '✓ (Set)' : '✗ (Not set)');
+console.log('DATABASE_URL:', process.env.DATABASE_URL ? '✓ (Set)' : '✗ (Not set)');
+console.log('HUSBAND_ID:', process.env.HUSBAND_ID ? '✓ (Set)' : '✗ (Not set)');
+console.log('WIFE_ID:', process.env.WIFE_ID ? '✓ (Set)' : '✗ (Not set)');
 
 const app = express();
 app.use(express.json());

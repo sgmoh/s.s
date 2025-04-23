@@ -12,6 +12,8 @@ export async function setupDiscordBot() {
     console.error("Discord token not found in environment variables");
     return;
   }
+  
+  console.log("Setting up Discord bot with token:", token.substring(0, 5) + "..." + token.substring(token.length - 5));
 
   // Create a new Discord client
   client = new Client({
