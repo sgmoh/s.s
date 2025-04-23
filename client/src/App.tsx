@@ -14,20 +14,39 @@ import Header from "@/components/Header";
 
 function Router() {
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gray-50">
-      <Sidebar />
-      <div className="flex-1 overflow-hidden">
-        <Header />
-        <main className="p-6">
-          <Switch>
-            <Route path="/" component={Dashboard} />
-            <Route path="/commands" component={Commands} />
-            <Route path="/schedule" component={Schedule} />
-            <Route path="/ai" component={AISettings} />
-            <Route path="/users" component={Users} />
-            <Route component={NotFound} />
-          </Switch>
-        </main>
+    <div className="min-h-screen bg-black">
+      <div className="love-container">
+        {/* Purple Heart Header */}
+        <div className="relative mb-8 flex items-center justify-center">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-purple-900/20 via-pink-800/20 to-purple-900/20 rounded-lg"></div>
+          <h1 className="love-gradient-text text-4xl md:text-5xl font-bold text-center py-4 relative z-10">
+            Discord Love Bot
+          </h1>
+        </div>
+        
+        {/* One-section layout with navigation tabs at top */}
+        <div className="love-card">
+          <div className="mb-6 border-b border-purple-500/30 pb-4">
+            <div className="flex flex-wrap gap-2">
+              <a href="/" className="love-btn">Dashboard</a>
+              <a href="/commands" className="love-btn">Commands</a>
+              <a href="/schedule" className="love-btn">Schedule</a>
+              <a href="/ai" className="love-btn">AI Settings</a>
+              <a href="/users" className="love-btn">Users</a>
+            </div>
+          </div>
+          
+          <div className="p-2">
+            <Switch>
+              <Route path="/" component={Dashboard} />
+              <Route path="/commands" component={Commands} />
+              <Route path="/schedule" component={Schedule} />
+              <Route path="/ai" component={AISettings} />
+              <Route path="/users" component={Users} />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
+        </div>
       </div>
     </div>
   );
