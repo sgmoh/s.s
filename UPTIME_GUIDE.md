@@ -14,7 +14,24 @@ Free hosting services often "spin down" your application after a period of inact
 
 ## Step 2: Create a Monitor for Your Discord Love Bot
 
-### Option A: Using the UptimeRobot Dashboard (Easiest)
+You have multiple options to set up UptimeRobot monitoring:
+
+### Option A: Using the Setup Helper Page (Recommended)
+
+1. Open the `uptime-setup.html` file in your browser
+2. Enter your deployed Discord Love Bot URL
+3. Click "Generate Monitor URL"
+4. Follow the on-screen instructions to complete setup in UptimeRobot
+
+### Option B: Using the Setup Script
+
+1. Open a terminal or command prompt
+2. Make the script executable: `chmod +x setup-uptime.sh`
+3. Run the script: `./setup-uptime.sh`
+4. Follow the interactive prompts
+5. The script will test your health endpoint and provide UptimeRobot setup instructions
+
+### Option C: Using the UptimeRobot Dashboard Manually
 
 1. Log into your UptimeRobot dashboard
 2. Click "Add New Monitor"
@@ -26,7 +43,7 @@ Free hosting services often "spin down" your application after a period of inact
 6. Set the Monitoring Interval to 5 minutes
 7. Click "Create Monitor"
 
-### Option B: Using the Provided Script
+### Option D: Using the API Script
 
 1. Open the `uptimerobot-setup.js` file in this repository
 2. Get your UptimeRobot API Key:

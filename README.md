@@ -74,6 +74,23 @@ You can customize these schedules in the "Schedule" page of the web interface.
 - **User Preferences** - Configure each partner's preferences for types of messages
 - **Custom Content** - Add your own truth questions and dare challenges
 
+## Keeping Your Bot Online 24/7
+
+To ensure your Love Bot runs continuously, even on free hosting platforms:
+
+1. **UptimeRobot Setup**: This repository includes files to help you set up UptimeRobot monitoring:
+   - `uptimerobot-setup.js`: Script to automatically create a monitor
+   - `UPTIME_GUIDE.md`: Step-by-step guide for UptimeRobot configuration
+
+2. **How it works**: UptimeRobot pings your bot every 5 minutes, preventing it from going idle on free hosting platforms like Render or Replit.
+
+3. **Benefits**:
+   - Ensures scheduled messages are sent on time
+   - Keeps your Discord bot responsive 24/7
+   - Provides monitoring and alerts if your bot goes offline
+
+For detailed deployment instructions, see the `DEPLOYMENT.md` file.
+
 ## Development
 
 This project is built with:
