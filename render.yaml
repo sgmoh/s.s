@@ -4,7 +4,7 @@ services:
     name: discord-love-bot
     env: node
     buildCommand: npm ci && npm run build
-    startCommand: node dist/index.js
+    startCommand: node dist/server/index.js
     plan: free
     envVars:
       - key: NODE_ENV
