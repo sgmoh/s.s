@@ -19,6 +19,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // API Routes - prefixed with /api
   
+  // Health check endpoint for deployment platforms
+  app.get("/api/health", (req, res) => {
+    res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
+  });
+  
   // Stats routes
   app.get("/api/stats/commands", async (req, res) => {
     try {
