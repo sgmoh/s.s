@@ -10,7 +10,7 @@ import {
   insertBotConfigSchema,
   insertTruthQuestionSchema,
   insertDareChallengeSchema
-} from "@shared/schema";
+} from "../shared/schema";
 import { setupDiscordBot } from "./bot/discord";
 
 export async function registerRoutes(app: Express): Promise<Server> {

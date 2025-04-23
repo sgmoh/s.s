@@ -13,7 +13,7 @@ import {
   InsertDareChallenge, 
   CommandStat,
   InsertCommandStat 
-} from "@shared/schema";
+} from "../shared/schema";
 
 // Storage interface
 export interface IStorage {
