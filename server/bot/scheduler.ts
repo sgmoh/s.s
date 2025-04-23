@@ -3,7 +3,16 @@ import * as cron from "node-cron";
 import { storage } from "../storage";
 import { generateAIMessage } from "./ai";
 
-let scheduledTasks = [];
+// Import the AISettings type to ensure compatibility
+interface AISettings {
+  model: string;
+  temperature: number;
+  maxTokens: number;
+  messageStyle: string;
+};
+
+// Using an explicit type for the array of scheduled tasks
+let scheduledTasks: cron.ScheduledTask[] = [];
 
 export async function setupScheduler(client: Client) {
   // Clear any existing scheduled tasks
@@ -44,10 +53,10 @@ export async function setupScheduler(client: Client) {
   console.log(`Total scheduled tasks: ${scheduledTasks.length}`);
 }
 
-async function sendScheduledMessage(client: Client, message) {
+async function sendScheduledMessage(client: Client, message: { id: number; type: string; time: string; recipients: string; status: string }) {
   // Get user preferences to determine recipients
   const userPrefs = await storage.getUsersPreferences();
-  const recipients = [];
+  const recipients: string[] = [];
   
   // Determine which users should receive the message
   if (message.recipients === "both" || message.recipients === "husband") {
@@ -95,8 +104,8 @@ async function sendScheduledMessage(client: Client, message) {
         // Generate AI message for good morning
         content = await generateAIMessage({
           messageType: "goodmorning",
-          userStyle: userPref?.preferences?.messageStyle || "romantic",
-          aiSettings: botConfig.aiSettings
+          userStyle: userPref?.messageStyle || "romantic",
+          aiSettings: botConfig.aiSettings as AISettings
         });
       } else {
         // Default message if not good morning
@@ -120,7 +129,11 @@ async function sendScheduledMessage(client: Client, message) {
   }
 }
 
-function shouldSendMessageToUser(userPref, messageType) {
+function shouldSendMessageToUser(userPref: {
+  goodMorning?: boolean | null;
+  specialOccasions?: boolean | null;
+  reminders?: boolean | null;
+}, messageType: string): boolean {
   // Check user preferences for this message type
   if (messageType === "Good Morning" && !userPref.goodMorning) {
     return false;

@@ -75,7 +75,8 @@ export async function setupDiscordBot() {
 
   // Event: Interaction received (slash commands)
   client.on(Events.InteractionCreate, async (interaction) => {
-    if (!interaction.isCommand()) return;
+    // Only handle chat input commands (slash commands)
+    if (!interaction.isChatInputCommand()) return;
     
     const commandName = interaction.commandName;
     const command = commands[commandName as keyof typeof commands];
