@@ -1,6 +1,6 @@
-# Deploy Discord Love Bot on Replit
+# Deploy Sage and Salman on Replit
 
-This guide will walk you through deploying the Discord Love Bot on Replit, which offers a free and easy way to keep your bot running.
+This guide will walk you through deploying the Sage and Salman bot on Replit, which offers a free and easy way to keep your bot running.
 
 ## Prerequisites
 
@@ -105,4 +105,4 @@ To update your bot on Replit:
 - [Discord.js Guide](https://discordjs.guide/)
 - [UptimeRobot Documentation](https://uptimerobot.com/help/)
 
-With these steps, your Discord Love Bot will be deployed to Replit and ready to use!
+With these steps, your Sage and Salman bot will be deployed to Replit and ready to use!

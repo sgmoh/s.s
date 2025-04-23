@@ -1,8 +1,8 @@
-# Discord Love Bot - UptimeRobot Setup Guide
+# Sage and Salman - UptimeRobot Setup Guide
 
 ## Introduction
 
-This guide will walk you through setting up UptimeRobot to keep your Discord Love Bot running 24/7, even when deployed on free hosting platforms like Render or Replit.
+This guide will walk you through setting up UptimeRobot to keep your Sage and Salman bot running 24/7, even when deployed on free hosting platforms like Render or Replit.
 
 ## Why You Need UptimeRobot
 
@@ -20,8 +20,8 @@ UptimeRobot solves this by pinging your application at regular intervals (every 
 
 ### Step 2: Set Up a Monitor Using the HTML Tool
 
-1. After deploying your Discord Love Bot, open the `uptime-setup.html` file in your browser
-2. Enter your deployed URL (e.g., `https://discord-love-bot.onrender.com`)
+1. After deploying your Sage and Salman bot, open the `uptime-setup.html` file in your browser
+2. Enter your deployed URL (e.g., `https://sage-and-salman.onrender.com`)
 3. Click "Generate Monitor URL"
 4. Follow the instructions to create a monitor in UptimeRobot
 
@@ -30,7 +30,7 @@ UptimeRobot solves this by pinging your application at regular intervals (every 
 1. Log into your UptimeRobot dashboard
 2. Click "Add New Monitor"
 3. For "Monitor Type", select "HTTP(s)"
-4. For "Friendly Name", enter "Discord Love Bot"
+4. For "Friendly Name", enter "Sage and Salman"
 5. For "URL", enter your application's health endpoint: `https://your-deployed-url.com/api/health`
 6. Set the "Monitoring Interval" to 5 minutes
 7. Click "Create Monitor"
@@ -57,7 +57,7 @@ For advanced users who want to automate monitor creation:
    ```javascript
    // Replace these with your actual values
    const UPTIME_ROBOT_API_KEY = 'YOUR_UPTIME_ROBOT_API_KEY';
-   const DISCORD_BOT_URL = 'YOUR_DEPLOYED_URL'; // Without the /api/health part
+   const BOT_URL = 'YOUR_DEPLOYED_URL'; // Without the /api/health part
    ```
 
 3. Run the script:
@@ -87,4 +87,4 @@ For advanced users who want to automate monitor creation:
 
 ## Conclusion
 
-With UptimeRobot properly configured, your Discord Love Bot will remain online continuously, ensuring all scheduled messages, commands, and interactions work reliably, even on free hosting platforms!
+With UptimeRobot properly configured, your Sage and Salman bot will remain online continuously, ensuring all scheduled messages, commands, and interactions work reliably, even on free hosting platforms!

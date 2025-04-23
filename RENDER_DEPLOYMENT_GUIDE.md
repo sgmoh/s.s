@@ -1,6 +1,6 @@
-# Render Deployment Guide for Discord Love Bot
+# Render Deployment Guide for Sage and Salman
 
-This guide will walk you through deploying your Discord Love Bot to Render's free tier, which is an excellent choice for personal projects like this bot.
+This guide will walk you through deploying your Sage and Salman bot to Render's free tier, which is an excellent choice for personal projects like this bot.
 
 ## Prerequisites
 
@@ -21,13 +21,13 @@ This guide will walk you through deploying your Discord Love Bot to Render's fre
 1. Sign up or log in to [Render](https://render.com)
 2. From your dashboard, click "New +" and select "Web Service"
 3. Connect Render to your GitHub account if you haven't already
-4. Select the repository containing your Discord Love Bot
+4. Select the repository containing your Sage and Salman bot
 
 ## Step 3: Configure Your Web Service
 
 Fill in the following configuration details:
 
-- **Name**: `discord-love-bot` (or any name you prefer)
+- **Name**: `sage-and-salman-bot` (or any name you prefer)
 - **Environment**: `Node`
 - **Region**: Choose the closest to your location
 - **Branch**: `main` (or your default branch)
@@ -49,8 +49,8 @@ In the "Environment" section, add the following variables:
 
 1. From your Render dashboard, click "New +" and select "PostgreSQL"
 2. Configure your database:
-   - **Name**: `discord-love-bot-db` (must match the name in render.yaml)
-   - **Database**: `discordlovebot` (or any name you prefer)
+   - **Name**: `sage-and-salman-db` (must match the name in render.yaml)
+   - **Database**: `sageandsal` (or any name you prefer)
    - **User**: Will be generated automatically
    - **Region**: Choose the same region as your web service
    - **PostgreSQL Version**: 15
@@ -119,4 +119,4 @@ When you make changes to your repository:
 - [Discord.js Guide](https://discordjs.guide/)
 - [OpenAI API Documentation](https://platform.openai.com/docs/api-reference)
 
-With these steps, your Discord Love Bot will be deployed to Render and ready to use!
+With these steps, your Sage and Salman bot will be deployed to Render and ready to use!

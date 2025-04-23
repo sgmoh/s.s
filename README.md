@@ -1,4 +1,4 @@
-# Discord Love Bot
+# Sage and Salman
 
 A Discord bot designed to help couples stay connected and strengthen their relationship, even when physically apart. This bot provides personalized messages, reminders, games, and AI-powered romantic interactions.
 
