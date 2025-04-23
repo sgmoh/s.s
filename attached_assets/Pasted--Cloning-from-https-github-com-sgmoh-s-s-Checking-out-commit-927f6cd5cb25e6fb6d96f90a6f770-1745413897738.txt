@@ -1,0 +1,102 @@
+==> Cloning from https://github.com/sgmoh/s.s
+==> Checking out commit 927f6cd5cb25e6fb6d96f90a6f770499f259180e in branch main
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 208B done
+#1 DONE 0.0s
+#2 [internal] load metadata for docker.io/library/node:20-slim
+#2 ...
+#3 [auth] library/node:pull render-prod/docker-mirror-repository/library/node:pull token for us-west1-docker.pkg.dev
+#3 DONE 0.0s
+#2 [internal] load metadata for docker.io/library/node:20-slim
+#2 DONE 0.6s
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+#5 [1/5] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#5 resolve docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633 0.0s done
+#5 ...
+#6 [internal] load build context
+#6 transferring context: 1.37MB 0.0s done
+#6 DONE 0.1s
+#5 [1/5] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#5 extracting sha256:8a628cdd7ccc83e90e5a95888fcb0ec24b991141176c515ad101f12d6433eb96
+#5 extracting sha256:8a628cdd7ccc83e90e5a95888fcb0ec24b991141176c515ad101f12d6433eb96 0.9s done
+#5 extracting sha256:d1dd334a81115b09134618d67d53ebb6162d9cd6858905dfaec3a8da9e64ae39
+#5 extracting sha256:d1dd334a81115b09134618d67d53ebb6162d9cd6858905dfaec3a8da9e64ae39 0.2s done
+#5 extracting sha256:b452662ac2b1cc5015de958ca3db9cf65d6ea42ad1ffda528555cad4476cd3f9
+#5 extracting sha256:b452662ac2b1cc5015de958ca3db9cf65d6ea42ad1ffda528555cad4476cd3f9 1.3s done
+#5 extracting sha256:b085206451dbd0bcfa0cdf6c5c2cf33f257e2d077408c49b0a9ff1b411c126a8 0.1s done
+#5 DONE 3.2s
+#5 [1/5] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#5 extracting sha256:9a176e756f6b6a4029593582d7c51f7c2839913d7da3e1a3f967de6e82654258 0.0s done
+#5 DONE 3.2s
+#7 [2/5] WORKDIR /app
+#7 DONE 0.0s
+#8 [3/5] COPY package*.json ./
+#8 DONE 0.0s
+#9 [4/5] RUN npm install
+#9 3.131 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+#9 3.665 npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+#9 3.676 npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+#9 8.217 
+#9 8.217 added 537 packages, and audited 538 packages in 8s
+#9 8.217 
+#9 8.217 78 packages are looking for funding
+#9 8.217   run `npm fund` for details
+#9 8.245 
+#9 8.245 7 moderate severity vulnerabilities
+#9 8.245 
+#9 8.245 To address issues that do not require attention, run:
+#9 8.245   npm audit fix
+#9 8.245 
+#9 8.245 To address all issues (including breaking changes), run:
+#9 8.245   npm audit fix --force
+#9 8.245 
+#9 8.245 Run `npm audit` for details.
+#9 8.246 npm notice
+#9 8.246 npm notice New major version of npm available! 10.8.2 -> 11.3.0
+#9 8.246 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0
+#9 8.246 npm notice To update run: npm install -g npm@11.3.0
+#9 8.246 npm notice
+#9 DONE 10.0s
+#10 [5/5] COPY . .
+#10 DONE 0.3s
+#11 exporting to docker image format
+#11 exporting layers
+#11 exporting layers 14.9s done
+#11 exporting manifest sha256:f0fd4f2727b7f18e54e8d4b0ab99e504dca5311c0a3af624893ebfd6fc1df41e done
+#11 exporting config sha256:45a2dbe2c42a45c4470e79d521e6ea43ccc70d24bb278e6e05bcf874145b6009 done
+#11 DONE 17.7s
+#12 exporting cache to client directory
+#12 preparing build cache for export
+#12 writing cache manifest sha256:5756d96edefadec6716f18ca947a170cad59fe2817c107b963355ecc2792e8b0 done
+#12 DONE 2.7s
+Pushing image to registry...
+Upload succeeded
+==> Deploying...
+node:internal/modules/esm/get_format:189
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".ts" for /app/server/index.ts
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:189:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:232:36)
+    at defaultLoad (node:internal/modules/esm/load:145:22)
+    at async ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:477:45)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:110:19) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+Node.js v20.19.1
+==> Exited with status 1
+==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+node:internal/modules/esm/get_format:189
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".ts" for /app/server/index.ts
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:189:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:232:36)
+    at defaultLoad (node:internal/modules/esm/load:145:22)
+    at async ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:477:45)
+    at async ModuleJob._link (node:internal/modules/esm/module_job:110:19) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+Node.js v20.19.1
