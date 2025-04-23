@@ -3,8 +3,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { SCHEDULED_MESSAGES } from "@/lib/constants";
 import { getUKTime } from "@/lib/utils";
+import { BotStatus } from "@/lib/types";
 
 const Dashboard = () => {
+  // Get bot status
+  const { data: botStatus, isLoading: loadingStatus } = useQuery<BotStatus>({
+    queryKey: ["/api/bot/status"],
+    staleTime: 60000,
+    // If the API endpoint doesn't exist yet, return a default status
+    placeholderData: { isOnline: false, uptime: "0" }
+  });
+
   const { data: commandUsage, isLoading: loadingCommands } = useQuery({
     queryKey: ["/api/stats/commands"],
     staleTime: 60000,
@@ -82,21 +91,42 @@ const Dashboard = () => {
         </div>
       </div>
       
+      {/* Welcome Setup Banner */}
+      {!botStatus?.isOnline && (
+        <div className="bg-gradient-to-br from-purple-800/40 via-black/60 to-pink-800/40 border border-pink-500/30 rounded-xl p-6 shadow-lg mb-6">
+          <div className="flex items-center justify-center mb-4">
+            <h3 className="text-xl font-semibold text-center love-gradient-text">Welcome to Discord Love Bot</h3>
+          </div>
+          <p className="text-center text-pink-100 mb-4">
+            It looks like your bot is not connected yet. Complete the setup to get started with your personal Love Bot.
+          </p>
+          <div className="flex justify-center mt-6">
+            <a href="/setup" className="love-btn bg-gradient-to-r from-purple-800 to-pink-700">
+              Complete Setup
+            </a>
+          </div>
+        </div>
+      )}
+
       {/* Discord Love Bot Info */}
       <div className="bg-gradient-to-br from-purple-900/40 via-black/60 to-pink-900/40 border border-purple-500/30 rounded-xl p-6 shadow-lg">
         <div className="flex items-center justify-center mb-4">
-          <h3 className="text-xl font-semibold text-center love-gradient-text">Your Love Bot is Ready</h3>
+          <h3 className="text-xl font-semibold text-center love-gradient-text">
+            {botStatus?.isOnline ? "Your Love Bot is Ready" : "Getting Started"}
+          </h3>
         </div>
         <p className="text-center text-pink-100 mb-4">
-          Send lovely messages, play Truth or Dare, and brighten each other's day with automated greetings.
+          {botStatus?.isOnline 
+            ? "Send lovely messages, play Truth or Dare, and brighten each other's day with automated greetings." 
+            : "This template will help you create a personalized Discord bot for your relationship."}
         </p>
         <div className="flex justify-center space-x-4 mt-6">
-          <button className="love-btn">
+          <a href="/commands" className="love-btn">
             Check Commands
-          </button>
-          <button className="love-btn">
-            Edit Schedule
-          </button>
+          </a>
+          <a href="/schedule" className="love-btn">
+            View Schedule
+          </a>
         </div>
       </div>
     </>

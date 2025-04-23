@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -9,10 +9,21 @@ import Commands from "@/pages/Commands";
 import Schedule from "@/pages/Schedule";
 import AISettings from "@/pages/AISettings";
 import Users from "@/pages/Users";
+import Setup from "@/pages/Setup";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 
 function Router() {
+  const [location] = useLocation();
+  
+  // Check if we're on the setup page
+  const isSetupPage = location === "/setup";
+  
+  // If we're on the setup page, show only the Setup component
+  if (isSetupPage) {
+    return <Setup />;
+  }
+  
   return (
     <div className="min-h-screen bg-black">
       <div className="love-container">
@@ -33,6 +44,7 @@ function Router() {
               <a href="/schedule" className="love-btn">Schedule</a>
               <a href="/ai" className="love-btn">AI Settings</a>
               <a href="/users" className="love-btn">Users</a>
+              <a href="/setup" className="love-btn bg-gradient-to-r from-purple-800 to-pink-700">Setup</a>
             </div>
           </div>
           
@@ -43,6 +55,7 @@ function Router() {
               <Route path="/schedule" component={Schedule} />
               <Route path="/ai" component={AISettings} />
               <Route path="/users" component={Users} />
+              <Route path="/setup" component={Setup} />
               <Route component={NotFound} />
             </Switch>
           </div>

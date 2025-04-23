@@ -1,10 +1,15 @@
-import type { Express } from "express";
+import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
+import fs from "fs";
+import path from "path";
 import { 
   insertUserPreferencesSchema, 
-  insertScheduledMessageSchema 
+  insertScheduledMessageSchema,
+  insertBotConfigSchema,
+  insertTruthQuestionSchema,
+  insertDareChallengeSchema
 } from "@shared/schema";
 import { setupDiscordBot } from "./bot/discord";
 
@@ -43,6 +48,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error getting AI message stats:", error);
       res.status(500).json({ message: "Failed to fetch AI message stats" });
+    }
+  });
+
+  // Bot status route
+  app.get("/api/bot/status", async (req, res) => {
+    try {
+      const client = await import("./bot/discord").then(m => m.getDiscordClient());
+      const botConfig = await storage.getBotConfig();
+      
+      // Check if the bot client is initialized and connected
+      if (client && client.isReady() && botConfig) {
+        const uptime = client.uptime ? Math.floor(client.uptime / 1000) : 0;
+        const uptimeStr = `${Math.floor(uptime / 3600)}h ${Math.floor((uptime % 3600) / 60)}m ${uptime % 60}s`;
+        
+        res.json({
+          isOnline: true,
+          uptime: uptimeStr,
+          lastRestart: new Date().toISOString()
+        });
+      } else {
+        res.json({
+          isOnline: false,
+          uptime: "0",
+          lastRestart: null
+        });
+      }
+    } catch (error) {
+      console.error("Error getting bot status:", error);
+      res.status(500).json({ message: "Failed to fetch bot status" });
     }
   });
 
@@ -214,6 +248,121 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error getting dare challenge:", error);
       res.status(500).json({ message: "Failed to fetch dare challenge" });
+    }
+  });
+
+  // Setup API for template configuration
+  app.post("/api/setup", async (req, res) => {
+    try {
+      const { 
+        discordToken, 
+        husbandId, 
+        wifeId, 
+        openAiKey, 
+        aiModel, 
+        messageStyle,
+        customTruths,
+        customDares
+      } = req.body;
+
+      console.log("Setting up bot with configuration...");
+
+      // 1. Create or update bot configuration
+      let botConfig = await storage.getBotConfig();
+      
+      if (!botConfig) {
+        // Create new bot config
+        botConfig = await storage.createBotConfig({
+          token: discordToken,
+          aiApiKey: openAiKey, 
+          aiSettings: {
+            model: aiModel,
+            temperature: 0.7,
+            maxTokens: 150,
+            messageStyle: messageStyle
+          }
+        });
+      } else {
+        // Update existing bot config
+        botConfig = await storage.updateBotConfig({
+          token: discordToken,
+          aiApiKey: openAiKey,
+          aiSettings: {
+            ...botConfig.aiSettings,
+            model: aiModel,
+            messageStyle: messageStyle
+          }
+        });
+      }
+
+      // 2. Create or update user preferences for husband and wife
+      const husbandPrefs = await storage.getUserPreferences(husbandId);
+      if (!husbandPrefs) {
+        await storage.createUserPreference({
+          discordId: husbandId,
+          name: "husband",
+          goodMorning: true,
+          specialOccasions: true,
+          reminders: true,
+          messageStyle: "romantic"
+        });
+      }
+
+      const wifePrefs = await storage.getUserPreferences(wifeId);
+      if (!wifePrefs) {
+        await storage.createUserPreference({
+          discordId: wifeId,
+          name: "wife",
+          goodMorning: true,
+          specialOccasions: true,
+          reminders: true,
+          messageStyle: "romantic"
+        });
+      }
+
+      // 3. Add custom truth questions if provided
+      if (customTruths) {
+        const truthQuestions = customTruths.split('\n').filter(q => q.trim());
+        for (const question of truthQuestions) {
+          await storage.createTruthQuestion({
+            question: question.trim(),
+            isSpicy: question.toLowerCase().includes('spicy')
+          });
+        }
+      }
+
+      // 4. Add custom dare challenges if provided
+      if (customDares) {
+        const dareChallenges = customDares.split('\n').filter(d => d.trim());
+        for (const challenge of dareChallenges) {
+          await storage.createDareChallenge({
+            challenge: challenge.trim(),
+            isSpicy: challenge.toLowerCase().includes('spicy')
+          });
+        }
+      }
+
+      // 5. Write environment variables to .env file (for local development)
+      try {
+        const envContent = `DISCORD_TOKEN=${discordToken}\nOPENAI_API_KEY=${openAiKey}\nHUSBAND_ID=${husbandId}\nWIFE_ID=${wifeId}\n`;
+        fs.writeFileSync(path.join(process.cwd(), '.env'), envContent);
+      } catch (err) {
+        console.error("Error writing .env file:", err);
+        // Non-fatal error, continue
+      }
+
+      console.log("Setup completed successfully");
+      res.status(200).json({ success: true, message: "Setup completed successfully" });
+      
+      // Restart the Discord bot with new configuration
+      try {
+        await setupDiscordBot();
+      } catch (setupError) {
+        console.error("Error restarting Discord bot after setup:", setupError);
+      }
+    } catch (error) {
+      console.error("Error in setup process:", error);
+      res.status(500).json({ success: false, message: "Error during setup" });
     }
   });
 

@@ -1,20 +1,22 @@
-export const HUSBAND_ID = "930131254106550333";
-export const WIFE_ID = "772736306207129640";
+// These values can be configured in the Setup page
+export const HUSBAND_ID = "YOUR_HUSBAND_ID";
+export const WIFE_ID = "YOUR_WIFE_ID";
 export const DEFAULT_WAKE_TIME = "07:00";
-export const DEFAULT_TOKEN = "placeholder-token";
-export const DEFAULT_AI_KEY = "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";
+export const DEFAULT_TOKEN = "YOUR_DISCORD_TOKEN";
+export const DEFAULT_AI_KEY = "YOUR_OPENAI_API_KEY";
 
 export const AI_MODELS = [
-  { label: "DeepSeek R1 Zero (free)", value: "deepseek-r1-zero" },
-  { label: "GPT-3.5 Turbo", value: "gpt-3.5-turbo" },
-  { label: "Claude 3 Haiku", value: "claude-3-haiku" },
-  { label: "Llama 3 8B", value: "llama-3-8b" }
+  { id: "gpt-4o", name: "GPT-4o (Recommended)" },
+  { id: "gpt-3.5-turbo", name: "GPT-3.5 Turbo (Faster)" },
+  { id: "gpt-4", name: "GPT-4 (Original)" }
 ];
 
 export const MESSAGE_STYLES = [
-  { label: "Romantic", value: "romantic" },
-  { label: "Funny", value: "funny" },
-  { label: "Adventurous", value: "adventurous" }
+  { id: "romantic", name: "Romantic" },
+  { id: "funny", name: "Funny" },
+  { id: "sweet", name: "Sweet" },
+  { id: "poetic", name: "Poetic" },
+  { id: "adventurous", name: "Adventurous" }
 ];
 
 export const SCHEDULED_MESSAGES = [
