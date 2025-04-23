@@ -96,8 +96,7 @@ async function sendScheduledMessage(client: Client, message) {
         content = await generateAIMessage({
           messageType: "goodmorning",
           userStyle: userPref?.preferences?.messageStyle || "romantic",
-          aiSettings: botConfig.aiSettings,
-          apiKey: botConfig.aiApiKey
+          aiSettings: botConfig.aiSettings
         });
       } else {
         // Default message if not good morning
