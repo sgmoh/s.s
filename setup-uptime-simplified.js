@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 /**
- * Discord Love Bot - UptimeRobot Setup Helper
+ * Sage and Salman - UptimeRobot Setup Helper
  * 
  * This simplified script helps you set up UptimeRobot monitoring
- * to keep your Discord Love Bot running 24/7.
+ * to keep your Sage and Salman bot running 24/7.
  */
 
 const readline = require('readline');
@@ -31,15 +31,15 @@ const colors = {
 
 // Print welcome message
 console.log(`\n${colors.purple}===============================================${colors.reset}`);
-console.log(`${colors.purple}    Discord Love Bot - UptimeRobot Setup Helper    ${colors.reset}`);
+console.log(`${colors.purple}    Sage and Salman - UptimeRobot Setup Helper    ${colors.reset}`);
 console.log(`${colors.purple}===============================================${colors.reset}\n`);
 
 console.log(`This script will help you set up UptimeRobot monitoring to keep`);
-console.log(`your Discord Love Bot running 24/7, even on free hosting.\n`);
+console.log(`your Sage and Salman bot running 24/7, even on free hosting.\n`);
 
 // Ask for deployed URL
 function askForDeployedUrl() {
-  rl.question(`${colors.cyan}What is your deployed Discord Love Bot URL?${colors.reset}\n${colors.yellow}Example: https://discord-love-bot.onrender.com${colors.reset}\n> `, (deployedUrl) => {
+  rl.question(`${colors.cyan}What is your deployed Sage and Salman URL?${colors.reset}\n${colors.yellow}Example: https://sage-and-salman.onrender.com${colors.reset}\n> `, (deployedUrl) => {
     // Basic URL validation
     if (!deployedUrl.startsWith('http://') && !deployedUrl.startsWith('https://')) {
       console.log(`\n${colors.red}Error: URL must start with http:// or https://${colors.reset}`);
@@ -123,7 +123,7 @@ function createMonitorWithApi(apiKey, healthUrl) {
   
   const monitor = {
     api_key: apiKey,
-    friendly_name: 'Discord Love Bot',
+    friendly_name: 'Sage and Salman',
     url: healthUrl,
     type: 2, // HTTP(s) monitor
     interval: 5 // Check every 5 minutes
@@ -156,7 +156,7 @@ function createMonitorWithApi(apiKey, healthUrl) {
         
         if (response.stat === 'ok') {
           console.log(`\n${colors.green}✅ Monitor created successfully!${colors.reset}`);
-          console.log(`Your Discord Love Bot at ${healthUrl} is now being monitored.`);
+          console.log(`Your Sage and Salman bot at ${healthUrl} is now being monitored.`);
           console.log(`It will be checked every 5 minutes to ensure it stays online 24/7.`);
           showNextSteps();
         } else {
@@ -191,7 +191,7 @@ function provideManualInstructions(healthUrl) {
   console.log(`2. Log into your UptimeRobot dashboard`);
   console.log(`3. Click "Add New Monitor"`);
   console.log(`4. Select "HTTP(s)" as the Monitor Type`);
-  console.log(`5. Enter "Discord Love Bot" as the Friendly Name`);
+  console.log(`5. Enter "Sage and Salman" as the Friendly Name`);
   console.log(`6. Enter the following URL in the URL field:`);
   console.log(`   ${colors.green}${healthUrl}${colors.reset}`);
   console.log(`7. Set the Monitoring Interval to 5 minutes`);
@@ -219,6 +219,6 @@ askForDeployedUrl();
 
 // Handle exit
 rl.on('close', () => {
-  console.log(`\nThank you for using the Discord Love Bot UptimeRobot Setup Helper!`);
+  console.log(`\nThank you for using the Sage and Salman UptimeRobot Setup Helper!`);
   process.exit(0);
 });

@@ -1,7 +1,7 @@
 
 services:
   - type: web
-    name: discord-love-bot
+    name: sage-and-salman
     env: node
     buildCommand: npm ci && npm run build
     startCommand: NODE_ENV=production node dist/server/index.js
@@ -19,12 +19,12 @@ services:
         sync: false
       - key: DATABASE_URL
         fromDatabase:
-          name: discord-love-bot-db
+          name: sage-and-salman-db
           property: connectionString
     healthCheckPath: /api/health
     autoDeploy: true
 
 databases:
-  - name: discord-love-bot-db
+  - name: sage-and-salman-db
     plan: free
     postgresMajorVersion: 15

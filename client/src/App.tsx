@@ -31,7 +31,7 @@ function Router() {
         <div className="relative mb-8 flex items-center justify-center">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-purple-900/20 via-pink-800/20 to-purple-900/20 rounded-lg"></div>
           <h1 className="love-gradient-text text-4xl md:text-5xl font-bold text-center py-4 relative z-10">
-            Discord Love Bot
+            Sage and Salman
           </h1>
         </div>
         

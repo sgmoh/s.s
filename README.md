@@ -34,8 +34,8 @@ A Discord bot designed to help couples stay connected and strengthen their relat
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/discord-love-bot.git
-   cd discord-love-bot
+   git clone https://github.com/yourusername/sage-and-salman.git
+   cd sage-and-salman
    ```
 
 2. Install dependencies:
@@ -45,7 +45,7 @@ A Discord bot designed to help couples stay connected and strengthen their relat
 
 3. Create a `.env` file with the following variables:
    ```
-   DATABASE_URL=postgresql://username:password@localhost:5432/discordlovebot
+   DATABASE_URL=postgresql://username:password@localhost:5432/sageandsalman
    DISCORD_TOKEN=your_discord_bot_token
    OPENAI_API_KEY=your_openai_api_key
    HUSBAND_ID=discord_user_id_for_husband

@@ -113,8 +113,12 @@ export class MemStorage implements IStorage {
   
   async createBotConfig(config: InsertBotConfig): Promise<BotConfig> {
     const now = new Date();
+    // Ensure wakeupTime is always set
+    const wakeupTime = config.wakeupTime || "07:00";
+    
     const newConfig: BotConfig = {
       ...config,
+      wakeupTime, // Use the default or provided value
       id: 1,
       createdAt: now,
       updatedAt: now,
@@ -150,8 +154,19 @@ export class MemStorage implements IStorage {
   async createUserPreference(pref: InsertUserPreference): Promise<UserPreference> {
     const id = this.prefCounter++;
     const now = new Date();
+    
+    // Set default values for optional fields
+    const goodMorning = pref.goodMorning ?? true;
+    const specialOccasions = pref.specialOccasions ?? true;
+    const reminders = pref.reminders ?? false;
+    const messageStyle = pref.messageStyle ?? "romantic";
+    
     const newPref: UserPreference = {
       ...pref,
+      goodMorning,
+      specialOccasions,
+      reminders,
+      messageStyle,
       id,
       createdAt: now,
       updatedAt: now,
@@ -190,8 +205,13 @@ export class MemStorage implements IStorage {
   async createScheduledMessage(message: InsertScheduledMessage): Promise<ScheduledMessage> {
     const id = this.scheduleCounter++;
     const now = new Date();
+    
+    // Ensure status has a default value if not provided
+    const status = message.status ?? "active";
+    
     const newMessage: ScheduledMessage = {
       ...message,
+      status, // Use the default or provided value
       id,
       createdAt: now,
       updatedAt: now,
@@ -235,8 +255,13 @@ export class MemStorage implements IStorage {
   async createTruthQuestion(question: InsertTruthQuestion): Promise<TruthQuestion> {
     const id = this.truthCounter++;
     const now = new Date();
+    
+    // Ensure isSpicy has a default value
+    const isSpicy = question.isSpicy ?? false;
+    
     const newQuestion: TruthQuestion = {
       ...question,
+      isSpicy,
       id,
       createdAt: now,
     };
@@ -258,8 +283,13 @@ export class MemStorage implements IStorage {
   async createDareChallenge(challenge: InsertDareChallenge): Promise<DareChallenge> {
     const id = this.dareCounter++;
     const now = new Date();
+    
+    // Ensure isSpicy has a default value
+    const isSpicy = challenge.isSpicy ?? false;
+    
     const newChallenge: DareChallenge = {
       ...challenge,
+      isSpicy,
       id,
       createdAt: now,
     };

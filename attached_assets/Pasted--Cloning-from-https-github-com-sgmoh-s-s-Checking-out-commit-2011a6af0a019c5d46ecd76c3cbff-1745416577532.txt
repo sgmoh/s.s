@@ -1,0 +1,146 @@
+==> Cloning from https://github.com/sgmoh/s.s
+==> Checking out commit 2011a6af0a019c5d46ecd76c3cbff62cb4f26ac9 in branch main
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 209B done
+#1 DONE 0.0s
+#2 [internal] load metadata for docker.io/library/node:20-slim
+#2 ...
+#3 [auth] library/node:pull render-prod/docker-mirror-repository/library/node:pull token for us-west1-docker.pkg.dev
+#3 DONE 0.0s
+#2 [internal] load metadata for docker.io/library/node:20-slim
+#2 DONE 0.6s
+#4 [internal] load .dockerignore
+#4 transferring context:
+#4 transferring context: 2B done
+#4 DONE 0.0s
+#5 [1/6] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#5 resolve docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633 0.0s done
+#5 ...
+#6 [internal] load build context
+#6 transferring context: 1.59MB 0.0s done
+#6 DONE 0.1s
+#5 [1/6] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#5 extracting sha256:8a628cdd7ccc83e90e5a95888fcb0ec24b991141176c515ad101f12d6433eb96
+#5 extracting sha256:8a628cdd7ccc83e90e5a95888fcb0ec24b991141176c515ad101f12d6433eb96 0.9s done
+#5 extracting sha256:d1dd334a81115b09134618d67d53ebb6162d9cd6858905dfaec3a8da9e64ae39
+#5 extracting sha256:d1dd334a81115b09134618d67d53ebb6162d9cd6858905dfaec3a8da9e64ae39 0.4s done
+#5 DONE 2.1s
+#5 [1/6] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#5 extracting sha256:b452662ac2b1cc5015de958ca3db9cf65d6ea42ad1ffda528555cad4476cd3f9
+#5 extracting sha256:b452662ac2b1cc5015de958ca3db9cf65d6ea42ad1ffda528555cad4476cd3f9 1.9s done
+#5 extracting sha256:b085206451dbd0bcfa0cdf6c5c2cf33f257e2d077408c49b0a9ff1b411c126a8 0.1s done
+#5 DONE 4.0s
+#5 [1/6] FROM docker.io/library/node:20-slim@sha256:9513b8d4c59c7c35e76934765add45efb89102d639f945341d7948b168237633
+#5 extracting sha256:9a176e756f6b6a4029593582d7c51f7c2839913d7da3e1a3f967de6e82654258 0.0s done
+#5 DONE 4.0s
+#7 [2/6] WORKDIR /app
+#7 DONE 0.0s
+#8 [3/6] COPY package*.json ./
+#8 DONE 0.0s
+#9 [4/6] RUN npm ci
+#9 3.743 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+#9 4.275 npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+#9 4.290 npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+#9 9.581 
+#9 9.581 added 536 packages, and audited 537 packages in 9s
+#9 9.581 
+#9 9.581 78 packages are looking for funding
+#9 9.581   run `npm fund` for details
+#9 9.607 
+#9 9.607 6 moderate severity vulnerabilities
+#9 9.607 
+#9 9.607 To address issues that do not require attention, run:
+#9 9.607   npm audit fix
+#9 9.607 
+#9 9.607 To address all issues (including breaking changes), run:
+#9 9.607   npm audit fix --force
+#9 9.607 
+#9 9.607 Run `npm audit` for details.
+#9 9.608 npm notice
+#9 9.608 npm notice New major version of npm available! 10.8.2 -> 11.3.0
+#9 9.608 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0
+#9 9.608 npm notice To update run: npm install -g npm@11.3.0
+#9 9.608 npm notice
+#9 DONE 14.8s
+#10 [5/6] COPY . .
+#10 DONE 0.4s
+#11 [6/6] RUN npm run build
+#11 0.181 
+#11 0.181 > rest-express@1.0.0 build
+#11 0.181 > vite build && tsc
+#11 0.181 
+#11 0.389 vite v5.4.14 building for production...
+#11 0.437 transforming...
+#11 0.663 Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+#11 0.663   npx update-browserslist-db@latest
+#11 0.663   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+#11 3.931 ✓ 1730 modules transformed.
+#11 4.146 rendering chunks...
+#11 4.153 computing gzip size...
+#11 4.165 ../dist/public/index.html                   1.09 kB │ gzip:   0.58 kB
+#11 4.165 ../dist/public/assets/index-CrrlJyx1.css   71.67 kB │ gzip:  12.02 kB
+#11 4.165 ../dist/public/assets/index-D7qdmIAC.js   381.88 kB │ gzip: 119.75 kB
+#11 4.165 ✓ built in 3.75s
+#11 7.186 server/bot/commands.ts(16,21): error TS7006: Parameter 'interaction' implicitly has an 'any' type.
+#11 7.187 server/bot/commands.ts(58,21): error TS7006: Parameter 'interaction' implicitly has an 'any' type.
+#11 7.187 server/bot/scheduler.ts(6,5): error TS7034: Variable 'scheduledTasks' implicitly has type 'any[]' in some locations where its type cannot be determined.
+#11 7.187 server/bot/scheduler.ts(10,3): error TS7005: Variable 'scheduledTasks' implicitly has an 'any[]' type.
+#11 7.187 server/bot/scheduler.ts(47,53): error TS7006: Parameter 'message' implicitly has an 'any' type.
+#11 7.187 server/bot/scheduler.ts(98,32): error TS2339: Property 'preferences' does not exist on type '{ id: number; name: string; createdAt: Date; updatedAt: Date; discordId: string; goodMorning: boolean | null; specialOccasions: boolean | null; reminders: boolean | null; messageStyle: string | null; }'.
+#11 7.187 server/bot/scheduler.ts(99,11): error TS2322: Type 'unknown' is not assignable to type '{ model: string; temperature: number; maxTokens: number; messageStyle: string; }'.
+#11 7.187 server/bot/scheduler.ts(123,34): error TS7006: Parameter 'userPref' implicitly has an 'any' type.
+#11 7.187 server/bot/scheduler.ts(123,44): error TS7006: Parameter 'messageType' implicitly has an 'any' type.
+#11 7.187 server/routes.ts(296,13): error TS2698: Spread types may only be created from object types.
+#11 7.187 server/routes.ts(330,64): error TS7006: Parameter 'q' implicitly has an 'any' type.
+#11 7.187 server/routes.ts(341,63): error TS7006: Parameter 'd' implicitly has an 'any' type.
+#11 7.187 server/storage.ts(116,11): error TS2322: Type '{ id: number; createdAt: Date; updatedAt: Date; token: string; aiApiKey: string; aiSettings: Json; wakeupTime?: string | undefined; }' is not assignable to type '{ id: number; token: string; aiApiKey: string; wakeupTime: string; aiSettings: unknown; createdAt: Date; updatedAt: Date; }'.
+#11 7.187   Types of property 'wakeupTime' are incompatible.
+#11 7.187     Type 'string | undefined' is not assignable to type 'string'.
+#11 7.187       Type 'undefined' is not assignable to type 'string'.
+#11 7.187 server/storage.ts(153,11): error TS2322: Type '{ id: number; createdAt: Date; updatedAt: Date; name: string; discordId: string; goodMorning?: boolean | null | undefined; specialOccasions?: boolean | null | undefined; reminders?: boolean | ... 1 more ... | undefined; messageStyle?: string | ... 1 more ... | undefined; }' is not assignable to type '{ id: number; name: string; createdAt: Date; updatedAt: Date; discordId: string; goodMorning: boolean | null; specialOccasions: boolean | null; reminders: boolean | null; messageStyle: string | null; }'.
+#11 7.187   Types of property 'goodMorning' are incompatible.
+#11 7.187     Type 'boolean | null | undefined' is not assignable to type 'boolean | null'.
+#11 7.187       Type 'undefined' is not assignable to type 'boolean | null'.
+#11 7.188 server/storage.ts(193,11): error TS2322: Type '{ id: number; createdAt: Date; updatedAt: Date; type: string; time: string; recipients: string; status?: string | undefined; }' is not assignable to type '{ id: number; createdAt: Date; updatedAt: Date; type: string; time: string; recipients: string; status: string; }'.
+#11 7.188   Types of property 'status' are incompatible.
+#11 7.188     Type 'string | undefined' is not assignable to type 'string'.
+#11 7.188       Type 'undefined' is not assignable to type 'string'.
+#11 7.188 server/storage.ts(238,11): error TS2322: Type '{ id: number; createdAt: Date; question: string; isSpicy?: boolean | null | undefined; }' is not assignable to type '{ id: number; createdAt: Date; question: string; isSpicy: boolean | null; }'.
+#11 7.188   Types of property 'isSpicy' are incompatible.
+#11 7.188     Type 'boolean | null | undefined' is not assignable to type 'boolean | null'.
+#11 7.188       Type 'undefined' is not assignable to type 'boolean | null'.
+#11 7.188 server/storage.ts(261,11): error TS2322: Type '{ id: number; createdAt: Date; challenge: string; isSpicy?: boolean | null | undefined; }' is not assignable to type '{ id: number; createdAt: Date; isSpicy: boolean | null; challenge: string; }'.
+#11 7.188   Types of property 'isSpicy' are incompatible.
+#11 7.188     Type 'boolean | null | undefined' is not assignable to type 'boolean | null'.
+#11 7.188       Type 'undefined' is not assignable to type 'boolean | null'.
+#11 7.188 server/storage.ts(301,11): error TS2322: Type '{ id: number; command: string; userId: string; usedAt?: Date | undefined; }' is not assignable to type '{ id: number; command: string; usedAt: Date; userId: string; }'.
+#11 7.188   Types of property 'usedAt' are incompatible.
+#11 7.188     Type 'Date | undefined' is not assignable to type 'Date'.
+#11 7.188       Type 'undefined' is not assignable to type 'Date'.
+#11 7.188 server/vite.ts(39,5): error TS2322: Type '{ middlewareMode: boolean; hmr: { server: Server<typeof IncomingMessage, typeof ServerResponse>; }; allowedHosts: boolean; }' is not assignable to type 'ServerOptions'.
+#11 7.188   Types of property 'allowedHosts' are incompatible.
+#11 7.188     Type 'boolean' is not assignable to type 'true | string[] | undefined'.
+#11 ERROR: process "/bin/sh -c npm run build" did not complete successfully: exit code: 2
+------
+ > [6/6] RUN npm run build:
+7.188   Types of property 'isSpicy' are incompatible.
+7.188     Type 'boolean | null | undefined' is not assignable to type 'boolean | null'.
+7.188       Type 'undefined' is not assignable to type 'boolean | null'.
+7.188 server/storage.ts(301,11): error TS2322: Type '{ id: number; command: string; userId: string; usedAt?: Date | undefined; }' is not assignable to type '{ id: number; command: string; usedAt: Date; userId: string; }'.
+7.188   Types of property 'usedAt' are incompatible.
+7.188     Type 'Date | undefined' is not assignable to type 'Date'.
+7.188       Type 'undefined' is not assignable to type 'Date'.
+7.188 server/vite.ts(39,5): error TS2322: Type '{ middlewareMode: boolean; hmr: { server: Server<typeof IncomingMessage, typeof ServerResponse>; }; allowedHosts: boolean; }' is not assignable to type 'ServerOptions'.
+7.188   Types of property 'allowedHosts' are incompatible.
+7.188     Type 'boolean' is not assignable to type 'true | string[] | undefined'.
+------
+Dockerfile:12
+--------------------
+  10 |     
+  11 |     ENV NODE_ENV=production
+  12 | >>> RUN npm run build
+  13 |     
+  14 |     EXPOSE 5000
+--------------------
+error: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 2
+error: exit status 1
